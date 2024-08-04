@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwd1lsqt4lfki"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dena8"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_rjtm6"]
+left_to_right = 0.0
+size = Vector3(5, 1, 2)
+
+[node name="RampObstacle" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_dena8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+mesh = SubResource("PrismMesh_rjtm6")
