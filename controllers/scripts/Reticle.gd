@@ -13,7 +13,7 @@ func _ready():
 	queue_redraw()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	adjust_reticle_lines()
 
 func _draw():

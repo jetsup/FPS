@@ -1,13 +1,14 @@
 [gd_scene load_steps=7 format=3 uid="uid://cx6e3n65ahrcp"]
 
-[ext_resource type="PackedScene" uid="uid://bmnaokfjs2ekn" path="res://Characters/Player.tscn" id="1_25vt0"]
+[ext_resource type="PackedScene" uid="uid://bmnaokfjs2ekn" path="res://characters/Player.tscn" id="1_25vt0"]
 [ext_resource type="Material" uid="uid://cn1gsy15bkaff" path="res://materials/grid.tres" id="2_41ol2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ipqbl"]
-size = Vector3(50, 0.2, 50)
+size = Vector3(100, 0.2, 100)
 
 [sub_resource type="BoxMesh" id="BoxMesh_wk323"]
-size = Vector3(50, 0.2, 50)
+material = ExtResource("2_41ol2")
+size = Vector3(100, 0.2, 100)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_44w2f"]
 size = Vector3(6, 0.2, 5)
