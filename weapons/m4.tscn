@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://gkee5wg63erp"]
+
+[ext_resource type="PackedScene" uid="uid://dnq8avabfx56j" path="res://models/M4/scene.gltf" id="1_hm0ul"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_hm0ul")]

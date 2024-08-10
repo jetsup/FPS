@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bmnaokfjs2ekn"]
+[gd_scene load_steps=20 format=3 uid="uid://bmnaokfjs2ekn"]
 
 [ext_resource type="Script" path="res://controllers/scripts/Player.gd" id="1_l1ddj"]
 [ext_resource type="Material" uid="uid://b4gwd5h7ixvct" path="res://materials/player.tres" id="2_aufqb"]
@@ -8,6 +8,9 @@
 [ext_resource type="Script" path="res://controllers/scripts/states/StateMachine.gd" id="6_nju3o"]
 [ext_resource type="Script" path="res://controllers/scripts/states/IdlePlayerState.gd" id="7_5tyxo"]
 [ext_resource type="Script" path="res://controllers/scripts/states/WalkingPlayerState.gd" id="8_7531m"]
+[ext_resource type="Script" path="res://controllers/scripts/states/SprintingPlayerState.gd" id="9_0y0i7"]
+[ext_resource type="PackedScene" uid="uid://gkee5wg63erp" path="res://weapons/m4.tscn" id="10_8iew5"]
+[ext_resource type="PackedScene" uid="uid://c201uw5p05gcb" path="res://weapons/ak47.tscn" id="10_ul25f"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jwwho"]
 
@@ -125,6 +128,44 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0)
 }
 
+[sub_resource type="Animation" id="Animation_2rv1x"]
+resource_name = "Sprinting"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraController:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0.0149095, -0.25, 0, 0.25, 0, 0.065461, -0.1, -0.0351991, 0.3, 0.0180752, 0.0749743, -0.2, -0.0114159, 0.3, -0.0447124, -0.0648707, -0.2, 0.0665929, 0.25, 0, -0.0753353, -0.3, 0.0142699, 0.1, 0.0485177, 0.0149095, -0.2, -0.0483864, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.8, 1, 1.2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CameraController:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0.7, -0.25, 0, 0.2, 0.0566291, 0.765758, -0.2, -0.0241649, 0.2, -0.018795, 0.663728, -0.2, 0.00859195, 0.3, 0.016647, 0.765758, -0.2, -0.0193319, 0.2, -0.018795, 0.664265, -0.2, 0.024165, 0.2, 0.012351, 0.7, -0.1, -0.0158657, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.8, 1, 1.2)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CameraController:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.8, 1, 1.2)
+}
+
 [sub_resource type="Animation" id="Animation_m0gmi"]
 resource_name = "Walking"
 length = 2.0
@@ -167,6 +208,7 @@ tracks/2/keys = {
 _data = {
 "Crouch": SubResource("Animation_0pe4x"),
 "RESET": SubResource("Animation_ux6l8"),
+"Sprinting": SubResource("Animation_2rv1x"),
 "Walking": SubResource("Animation_m0gmi")
 }
 
@@ -275,5 +317,18 @@ ANIMATION = NodePath("../../AnimationPlayer")
 [node name="WalkingPlayerState" type="Node" parent="PlayerStateMachine" node_paths=PackedStringArray("ANIMATION")]
 script = ExtResource("8_7531m")
 ANIMATION = NodePath("../../AnimationPlayer")
+
+[node name="SprintingPlayerState" type="Node" parent="PlayerStateMachine" node_paths=PackedStringArray("ANIMATION")]
+script = ExtResource("9_0y0i7")
+ANIMATION = NodePath("../../AnimationPlayer")
+
+[node name="WeaponController" type="Node3D" parent="."]
+
+[node name="AK47" parent="WeaponController" instance=ExtResource("10_ul25f")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1.05, -0.9, -0.078)
+
+[node name="M4" parent="WeaponController" instance=ExtResource("10_8iew5")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.05, 0.656, -0.077974)
+visible = false
 
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]
