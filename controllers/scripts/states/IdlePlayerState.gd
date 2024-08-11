@@ -1,7 +1,7 @@
 class_name  IdlePlayerState
 
 extends State
-
+@export var WEAPON_ANIMATION: AnimationPlayer
 @export var ANIMATION: AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.

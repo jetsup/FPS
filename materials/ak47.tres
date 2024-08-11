@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://c1jga0jvppchq"]
+
+[ext_resource type="Texture2D" uid="uid://cks264u20fdl4" path="res://models/AK-47/Texture 4096x4096/ak47_Base_Color.png" id="1_mw8fj"]
+[ext_resource type="Texture2D" uid="uid://m72ya57pdryl" path="res://models/AK-47/Texture 4096x4096/ak47_mat_AO.jpg" id="2_ydwdj"]
+[ext_resource type="Texture2D" uid="uid://b1qvko87n1cx7" path="res://models/AK-47/Texture 4096x4096/ak47_Metallic.png" id="3_8pfmv"]
+[ext_resource type="Texture2D" uid="uid://bmt5sklqfjb1a" path="res://models/AK-47/Texture 4096x4096/ak47_Normal.png" id="4_qisii"]
+[ext_resource type="Texture2D" uid="uid://b08f0vhfg5vpi" path="res://models/AK-47/Texture 4096x4096/ak47_Roughness.png" id="5_6kiht"]
+
+[resource]
+albedo_texture = ExtResource("1_mw8fj")
+metallic = 1.0
+metallic_texture = ExtResource("3_8pfmv")
+roughness_texture = ExtResource("5_6kiht")
+normal_enabled = true
+normal_texture = ExtResource("4_qisii")
+ao_enabled = true
+ao_texture = ExtResource("2_ydwdj")

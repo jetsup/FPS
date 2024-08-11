@@ -18,6 +18,8 @@ extends CharacterBody3D
 @export var ANIMATION_PLAYER: AnimationPlayer
 @export var CROUCH_SHAPECAST: Node3D
 
+@onready var WEAPON_VIEW_CAMERA = $CameraController/Camera3D/WeaponViewPort/SubViewport/WeaponViewCamera
+
 var _speed: float
 var _mouse_input: bool = false
 var _mouse_rotation: Vector3
@@ -52,7 +54,6 @@ func _unhandled_input(event):
 	if _mouse_input:
 		_rotation_input = -event.relative.x * MOUSE_SENSITIVITY
 		_tilt_input = -event.relative.y * MOUSE_SENSITIVITY
-		print(Vector2(_rotation_input, _tilt_input))
 
 func _update_camera(delta):
 	# Rotate the camera
@@ -75,6 +76,7 @@ func _ready():
 	Global.player = self
 	
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	$CameraController/Camera3D/WeaponViewPort/SubViewport.size = DisplayServer.window_get_size()
 	
 	CROUCH_SHAPECAST.add_exception($".")
 	
@@ -82,6 +84,9 @@ func _ready():
 
 func _physics_process(delta):
 	Global.debug.add_property("MovementSpeed", _speed, 1)
+	#global_transform was buggy
+	$CameraController/Camera3D/WeaponViewPort/SubViewport/WeaponViewCamera.global_transform = $CameraController/Camera3D.global_transform
+	
 	
 	# Add the gravity.
 	if not is_on_floor():
