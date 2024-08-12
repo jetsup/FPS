@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bx0nv0q5qhsex"
+path="res://.godot/imported/smg empty.wav-44dd40cc330e80f5e1c748fe58963f61.sample"
+
+[deps]
+
+source_file="res://assets/sounds/smg empty.wav"
+dest_files=["res://.godot/imported/smg empty.wav-44dd40cc330e80f5e1c748fe58963f61.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

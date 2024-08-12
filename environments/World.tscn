@@ -22,11 +22,11 @@ material = SubResource("StandardMaterial3D_3oge5")
 size = Vector3(100, 0.2, 100)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_44w2f"]
-size = Vector3(6, 0.2, 5)
+size = Vector3(6, 0.5, 5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_gyqg7"]
 material = ExtResource("2_41ol2")
-size = Vector3(6, 0.1, 5)
+size = Vector3(6, 0.3, 5)
 
 [node name="World" type="Node3D"]
 
@@ -42,7 +42,7 @@ mesh = SubResource("BoxMesh_wk323")
 transform = Transform3D(0.45865, -0.222972, -0.860188, 0.736307, -0.446574, 0.508354, -0.497487, -0.866519, -0.040645, -12.082, 12.3306, 3.53551)
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_25vt0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6583, 2.37132, 1.61421)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6583, 2.37132, 19.8966)
 
 [node name="LowerPlatform" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
