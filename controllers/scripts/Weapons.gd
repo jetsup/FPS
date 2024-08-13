@@ -34,8 +34,6 @@ func _ready():
 	for i in range(weapons_count):
 		var weapon = get_child(i)
 		WEAPONS.append(weapon)
-		print("Name:", weapon.name.to_lower())
-	# load sound for the primary weapon
 	if len(WEAPONS) > 0:
 		change_weapon(1, true)
 
@@ -100,21 +98,17 @@ func _process(delta):
 		WEAPON_ANIMATION.play("fire_empty", -1, FIRING_RATE_PER_MINUTE.get(SELECTED_WEAPON.name.to_lower()))
 
 func change_weapon(id: int, init: bool = false):# keyboard press 1,2...
-	if id > len(WEAPONS):
-		print("You only have ", len(WEAPONS), " weapons")
+	if id > len(WEAPONS) or SELECTED_WEAPON == WEAPONS[id - 1]:
 		return
-	elif SELECTED_WEAPON == WEAPONS[id - 1]:
-		return
-	print("Weapon: ", SELECTED_WEAPON)
 	
 	if init:
 		SELECTED_WEAPON = WEAPONS[id - 1]
 	else: # we have a weapon already
 		WEAPON_ANIMATION.play("draw", -1, -1, true)
 		await WEAPON_ANIMATION.animation_finished
+		SELECTED_WEAPON.set_visible(false)
 		SELECTED_WEAPON = WEAPONS[id - 1]
-		if SELECTED_WEAPON.visible == false:
-			SELECTED_WEAPON.set_visible(true)
+	SELECTED_WEAPON.set_visible(true)
 	
 	sfx_fast_reload = load("res://assets/sounds/" + SELECTED_WEAPON.name.to_lower() + " reload fast.wav")
 	sfx_full_reload = load("res://assets/sounds/" + SELECTED_WEAPON.name.to_lower() + " reload full.wav")
@@ -132,10 +126,8 @@ func change_weapon(id: int, init: bool = false):# keyboard press 1,2...
 	
 	if WEAPON_READY and not init:
 		# hide the cuurent weapon and draw another
-		print("WEAPON READY... NOT INIT")
 		WEAPON_ANIMATION.play("draw")
 	elif WEAPON_READY and init:
-		SELECTED_WEAPON.set_visible(true)
 		WEAPON_ANIMATION.play("draw")
 	# holster the current weapon
 	# unholster the other weapon if present

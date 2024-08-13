@@ -12,8 +12,8 @@ extends CharacterBody3D
 
 @export var MOUSE_SENSITIVITY: float = 0.2
 
-@export var TILT_LOWER_LIMIT := deg_to_rad(-90.0)
-@export var TILT_UPPER_LIMIT := deg_to_rad(90.0)
+@export var TILT_LOWER_LIMIT := deg_to_rad(-80.0)
+@export var TILT_UPPER_LIMIT := deg_to_rad(80.0)
 @export var CAMERA_CONTROLER: Camera3D
 @export var ANIMATION_PLAYER: AnimationPlayer
 @export var CROUCH_SHAPECAST: Node3D
