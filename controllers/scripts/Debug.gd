@@ -35,8 +35,3 @@ func add_property(title: String, value, order):
 		target.text = target.name + ": " + str(value)
 		property_container.move_child(target, order)
 
-#func add_debug_property(title: String, value):
-	#property = Label.new()
-	#property_container.add_child(property)
-	#property.name = title
-	#property.text = property.name + value

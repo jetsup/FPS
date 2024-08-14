@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bmnaokfjs2ekn"]
+[gd_scene load_steps=19 format=3 uid="uid://bmnaokfjs2ekn"]
 
 [ext_resource type="Script" path="res://controllers/scripts/Player.gd" id="1_l1ddj"]
 [ext_resource type="Material" uid="uid://b4gwd5h7ixvct" path="res://materials/player.tres" id="2_aufqb"]
@@ -10,8 +10,6 @@
 [ext_resource type="Script" path="res://controllers/scripts/states/IdlePlayerState.gd" id="7_5tyxo"]
 [ext_resource type="Script" path="res://controllers/scripts/states/WalkingPlayerState.gd" id="8_7531m"]
 [ext_resource type="Script" path="res://controllers/scripts/states/SprintingPlayerState.gd" id="9_0y0i7"]
-[ext_resource type="PackedScene" uid="uid://gkee5wg63erp" path="res://weapons/m4.tscn" id="10_8iew5"]
-[ext_resource type="PackedScene" uid="uid://c201uw5p05gcb" path="res://weapons/ak47.tscn" id="10_ul25f"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jwwho"]
 
@@ -253,7 +251,7 @@ positional_shadow_atlas_size = 4096
 render_target_update_mode = 4
 
 [node name="WeaponViewCamera" parent="CameraController/Camera3D/WeaponViewPort/SubViewport" instance=ExtResource("3_efy4q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47864, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.71327, 0)
 cull_mask = 1047554
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -341,15 +339,5 @@ ANIMATION = NodePath("../../AnimationPlayer")
 [node name="SprintingPlayerState" type="Node" parent="PlayerStateMachine" node_paths=PackedStringArray("ANIMATION")]
 script = ExtResource("9_0y0i7")
 ANIMATION = NodePath("../../AnimationPlayer")
-
-[node name="WeaponController" type="Node3D" parent="."]
-visible = false
-
-[node name="AK47" parent="WeaponController" instance=ExtResource("10_ul25f")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1.05, -0.9, -0.078)
-
-[node name="M4" parent="WeaponController" instance=ExtResource("10_8iew5")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.05, 0.656, -0.077974)
-visible = false
 
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]

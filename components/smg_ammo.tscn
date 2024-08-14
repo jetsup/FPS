@@ -297,7 +297,9 @@ bind/82/pose = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
 
 [node name="SMG-Body" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0308762, 0.12968, 0.00823365)
-mass = 0.22
+collision_layer = 2
+collision_mask = 3
+mass = 0.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SMG-Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0347656, -0.118994, -0.0103943)
@@ -305,7 +307,6 @@ shape = SubResource("BoxShape3D_wmtm2")
 
 [node name="Ammo" type="MeshInstance3D" parent="SMG-Body/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0535188, 0.0817661, -0.28265)
-layers = 2
 mesh = SubResource("ArrayMesh_fwegg")
 skin = SubResource("Skin_exjsn")
 skeleton = NodePath("")
